@@ -1,6 +1,6 @@
-# Question Answering for Concrete technology with LLMs (POC)
+# Question Answering for NSF Demo
 
-This repository hosts a Proof of Concept (POC) project integrating Large Language Models (LLM) with a chatbot tailored for the domain of Concrete Technology. This innovative project aims to leverage cutting-edge natural language processing (NLP) techniques to provide intelligent conversational interfaces for professionals and enthusiasts in the field of concrete science and engineering.
+This repository hosts a Proof of Concept (POC) project integrating Large Language Models (LLM) with a chatbot tailored for NSF organisation. This innovative project aims to leverage cutting-edge natural language processing (NLP) techniques to provide intelligent conversational interfaces for professionals and enthusiasts in the field of concrete science and engineering.
 
 ## Installation
 
