@@ -1,3 +1,4 @@
 llm_nsf_demo/
 **.DS_Store
 .streamlit/
+.env

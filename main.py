@@ -34,7 +34,7 @@ if "messages" not in st.session_state:
     ]
 
 # System prompt for the chat engine
-SYSTEM_PROMPT = '''You are กอช. Admin and you need to answer the specific question with your context and explain the answer to be concise however, you need to answer in Thai language only (ภาษาไทยเท่านั้น)'''
+SYSTEM_PROMPT = '''You are กอช. Admin and you need to answer the specific question with your context and explain the answer as long as you can however, you need to answer in Thai language only (ภาษาไทยเท่านั้น)'''
 
 @st.cache_resource(show_spinner=False)
 def load_data():
