@@ -18,15 +18,14 @@ dotenv.load_dotenv()
 
 # Streamlit configuration
 st.set_page_config(
-    page_title="Chat with the Streamlit docs, powered by LlamaIndex",
-    page_icon="🦙",
+    page_title="กอช.ยินดีให้บริการครับ",
     layout="centered",
     initial_sidebar_state="auto",
     menu_items=None
 )
 
 # API Key configuration
-GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', 'AIzaSyB20fzux92H6rfE0mfN8flMaeewJGp9_-4')
+google_api_key = st.secrets["GOOGLE_API_KEY"]
 
 # Initialize chat messages history
 if "messages" not in st.session_state:
@@ -39,12 +38,13 @@ SYSTEM_PROMPT = '''You are กอช. Admin and you need to answer the specific 
 
 @st.cache_resource(show_spinner=False)
 def load_data():
-    with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
+    # with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
+    with st.spinner(text="โปรดรอสักครู่ตอนนี้ระบบกำลังทำประมวณผล"):
         reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
         docs = reader.load_data()
 
         embed_model = GeminiEmbedding()
-        llm = Gemini(model='models/gemini-1.5-flash', google_api_key=GOOGLE_API_KEY)
+        llm = Gemini(model='models/gemini-1.5-flash', google_api_key=google_api_key)
 
         service_context = ServiceContext.from_defaults(llm=llm, embed_model=embed_model, system_prompt=SYSTEM_PROMPT)
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
@@ -69,7 +69,7 @@ for message in st.session_state.messages:
 # If last message is not from assistant, generate a new response
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
+        with st.spinner("โปรดรอสักครู่...."):
             response = st.session_state.chat_engine.chat(prompt)
             st.write(response.response)
             message = {"role": "assistant", "content": response.response}
